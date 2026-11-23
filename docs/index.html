@@ -1,0 +1,1019 @@
+<!DOCTYPE html><!-- gate-ignore -->
+<html lang="ru" data-theme="alabaster">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>SQUZZER ATELIER - Telegram-боты, автоматизация и сайты под ключ</title>
+  <meta name="description" content="Разработка Telegram-ботов, настройка таблиц и сбора заявок, быстрые сайты услуг и мини-приложения под ключ с проверкой пробного результата до оплаты.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141311'/%3E%3Crect x='4.5' y='4.5' width='23' height='23' rx='3' fill='none' stroke='%239A7B4F' stroke-width='1.5'/%3E%3Cpath d='M10 11h12M10 21h12M13 11l6 10' stroke='%23B4532A' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles/studio.css">
+  <script defer src="./assets/vendor/three.min.js"></script>
+  <script type="module" src="./scripts/studio.js"></script>
+</head>
+<body id="top">
+  <canvas id="stage-backdrop-canvas" class="stage-backdrop-canvas" aria-hidden="true"></canvas>
+  <div class="stage-fallback-mesh" aria-hidden="true"></div>
+  <div id="stage-atmosphere" class="stage-atmosphere" aria-hidden="true"></div>
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <a href="#main-content" class="skip-link visually-hidden">Перейти к содержанию</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+          <path d="M8 9h8M8 15h8M11 9l2 6"></path>
+        </svg>
+        <span>SQUZZER ATELIER</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Разделы сайта">
+        <ul class="nav-list">
+          <li><a href="#showcase">Проверка</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#cases">Примеры</a></li>
+          <li><a href="#calculator">Расчет</a></li>
+        </ul>
+      </nav>
+
+      <button
+        type="button"
+        id="open-contacts-btn"
+        class="header-contact-btn"
+        commandfor="contacts-popover"
+        command="toggle-popover"
+        aria-controls="contacts-popover"
+        aria-expanded="false"
+        aria-label="Открыть контакты для связи @SQUZZER_CODER"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span>@SQUZZER_CODER</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="container hero-shell">
+        <div class="hero-editorial-head">
+          <p id="hero-status" class="hero-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>На связи в Telegram, отвечаю за 15 минут с 10:00 до 22:00</span>
+          </p>
+
+          <h1 id="hero-title" class="hero-title">
+            <span class="reveal-line"><span class="reveal-line-inner">Боты, автоматизация</span></span>
+            <span class="reveal-line"><span class="reveal-line-inner">и сайты под ключ</span></span>
+            <span class="reveal-line"><span class="reveal-line-inner"><em class="hero-accent-italic">с проверкой результата до оплаты</em></span></span>
+          </h1>
+        </div>
+
+        <div class="hero-split">
+          <div class="hero-copy">
+            <p class="hero-lead">
+              Без сложных терминов и лишних шагов. Сначала показываем легкий пробный вариант именно под вашу задачу, а полную систему запускаем после согласования и оплаты.
+            </p>
+
+            <div class="hero-quick-row">
+              <p class="hero-quick-label">Выберите направление для старта</p>
+              <div class="hero-quick-tags">
+                <button type="button" class="quick-topic-btn" data-quick-topic="bot">
+                  <span>Telegram-бот</span>
+                </button>
+                <button type="button" class="quick-topic-btn" data-quick-topic="sheets">
+                  <span>Таблицы и заявки</span>
+                </button>
+                <button type="button" class="quick-topic-btn" data-quick-topic="site">
+                  <span>Сайт под ключ</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#showcase" class="btn btn-primary" data-magnetic>Посмотреть в работе</a>
+              <a href="#calculator" class="btn btn-secondary">Рассчитать стоимость</a>
+            </div>
+          </div>
+
+          <div class="hero-sculpture-zone">
+            <div class="hero-3d-stage" id="hero-3d-stage">
+              <canvas
+                id="hero-3d-canvas"
+                class="hero-3d-canvas"
+                aria-label="Объемная геометрическая скульптура с мягким светом"
+              ></canvas>
+              <img
+                id="hero-3d-fallback"
+                class="hero-3d-fallback"
+                src="./assets/media/stage_sculpture.webp"
+                alt="Объемная фигура студии SQUZZER ATELIER"
+                width="800"
+                height="800"
+                hidden
+              >
+            </div>
+
+            <div class="hero-3d-footer">
+              <div class="hero-3d-modes" role="group" aria-label="Режимы объемной формы">
+                <button type="button" class="mode-pill-btn" data-hero-3d-mode="crystal" aria-pressed="true">Кристалл</button>
+                <button type="button" class="mode-pill-btn" data-hero-3d-mode="orbit" aria-pressed="false">Орбита</button>
+                <button type="button" class="mode-pill-btn" data-hero-3d-mode="pulse" aria-pressed="false">Пульс</button>
+              </div>
+              <p class="hero-3d-hint">Потяните фигуру, чтобы повернуть ее</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" class="section dark-island showcase-section" aria-labelledby="showcase-title">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <p class="section-eyebrow">01 / Проверка сценариев</p>
+          <h2 id="showcase-title" class="section-title">Проверка в работе до заказа</h2>
+          <p class="section-lead">
+            Переключайте три сценария, чтобы увидеть, как выглядит ответ бота клиенту, автоматический отбор обращений в таблицу и быстрая страница заказа.
+          </p>
+        </div>
+
+        <div id="hero-stage" class="stage-frame dark-glass reveal-item" data-optical-surface>
+          <div class="stage-toolbar">
+            <span class="stage-toolbar-label">Выберите сценарий</span>
+            <div class="stage-tabs" role="group" aria-label="Выберите сценарий">
+              <button type="button" class="stage-tab-btn" data-stage-scene="bot" aria-pressed="true">Живой Telegram-бот</button>
+              <button type="button" class="stage-tab-btn" data-stage-scene="sheets" aria-pressed="false">Поток заявок и таблица</button>
+              <button type="button" class="stage-tab-btn" data-stage-scene="site" aria-pressed="false">Сайт и расчет заказа</button>
+            </div>
+          </div>
+
+          <div class="stage-panel" data-stage-panel="bot">
+            <div class="stage-bot-layout">
+              <div class="stage-bot-controls">
+                <h3 class="stage-panel-title">Пробный диалог до оплаты</h3>
+                <p class="stage-panel-desc">
+                  Нажмите на любую кнопку, чтобы проверить ответ бота клиенту и увидеть готовую карточку заявки для владельца.
+                </p>
+
+                <div class="bot-action-list">
+                  <button type="button" class="bot-action-btn" data-bot-action="price" aria-pressed="false">Посчитать цену</button>
+                  <button type="button" class="bot-action-btn" data-bot-action="booking" aria-pressed="false">Запись на время</button>
+                  <button type="button" class="bot-action-btn" data-bot-action="status" aria-pressed="false">Статус заказа</button>
+                </div>
+
+                <button type="button" id="bot-reset-btn" class="bot-reset-btn">Сбросить диалог</button>
+
+                <div class="owner-card">
+                  <p class="owner-card-title">Уведомление владельцу в Telegram</p>
+                  <p id="bot-owner-status" class="owner-card-status">Ожидание выбора клиента</p>
+                  <p id="bot-owner-text" class="owner-card-text">
+                    После коротких ответов клиента готовая заявка с ориентиром цены и контактом сразу приходит в ваш личный чат.
+                  </p>
+                </div>
+              </div>
+
+              <div class="bot-phone-shell" aria-label="Экран пробного диалога бота">
+                <div class="bot-phone-top">
+                  <span class="bot-peer-name">SQUZZER ATELIER</span>
+                  <span class="bot-peer-status">на связи</span>
+                </div>
+                <div id="bot-sim-messages" class="bot-sim-messages" aria-live="polite">
+                  <div class="bot-msg bot-msg--bot">
+                    <p class="bot-msg-text">Здравствуйте. Выберите сценарий слева, чтобы проверить ответ клиенту и карточку заявки для вашего чата.</p>
+                  </div>
+                </div>
+                <p id="bot-typing" class="bot-typing" hidden>Печатает ответ...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-panel" data-stage-panel="sheets" hidden>
+            <div class="sheets-header">
+              <div class="sheets-counters">
+                <div class="sheets-counter-item">
+                  <span id="sheets-count-in" class="sheets-counter-value">3</span>
+                  <span class="sheets-counter-label">Проверено сообщений</span>
+                </div>
+                <div class="sheets-counter-item">
+                  <span id="sheets-count-qualified" class="sheets-counter-value">1</span>
+                  <span class="sheets-counter-label">Отсеяно лишнего</span>
+                </div>
+                <div class="sheets-counter-item">
+                  <span id="sheets-count-sent" class="sheets-counter-value">2</span>
+                  <span class="sheets-counter-label">Передано в работу</span>
+                </div>
+              </div>
+              <button type="button" id="sheets-run-btn" class="btn btn-primary">Запустить отбор</button>
+            </div>
+
+            <div class="sheets-table-wrap">
+              <table class="sheets-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Обращение</th>
+                    <th scope="col">Отбор</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Срок</th>
+                  </tr>
+                </thead>
+                <tbody id="sheets-demo-tbody">
+                  <tr>
+                    <td>Запись на услугу и расчет цены</td>
+                    <td>Полезный запрос</td>
+                    <td><span class="stage-status-pill stage-status-pill--active">В таблице и чате</span></td>
+                    <td>~ 1-2 дня</td>
+                  </tr>
+                  <tr>
+                    <td>Рекламная рассылка по открытым чатам</td>
+                    <td>Лишний шум</td>
+                    <td><span class="stage-status-pill stage-status-pill--filtered">Отсеян</span></td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>Нужен сайт и бот для приема заказов</td>
+                    <td>Полезный запрос</td>
+                    <td><span class="stage-status-pill stage-status-pill--done">В таблице и чате</span></td>
+                    <td>~ 1 день</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="sheets-note">
+              Входящие сообщения проверяются по заданным правилам: реклама и случайный шум отсеиваются, а полезные запросы попадают в таблицу и ваш личный чат.
+            </p>
+          </div>
+
+          <div class="stage-panel" data-stage-panel="site" hidden>
+            <div class="site-stage-layout">
+              <div class="site-stage-controls">
+                <h3 class="stage-panel-title">Быстрая страница заказа с переходом в Telegram</h3>
+                <p class="stage-panel-desc">
+                  Переключайте экранные состояния, чтобы посмотреть путь клиента на телефоне от первого экрана до готового сообщения в личный чат.
+                </p>
+
+                <div class="site-scene-tabs">
+                  <button type="button" class="site-scene-btn" data-site-scene="0" aria-pressed="true">Первый экран</button>
+                  <button type="button" class="site-scene-btn" data-site-scene="1" aria-pressed="false">Интерактив</button>
+                  <button type="button" class="site-scene-btn" data-site-scene="2" aria-pressed="false">Расчет заказа</button>
+                  <button type="button" class="site-scene-btn" data-site-scene="3" aria-pressed="false">Переход в Telegram</button>
+                </div>
+
+                <div class="site-autoplay-row">
+                  <button type="button" id="site-autoplay-btn" class="btn btn-secondary-dark" aria-pressed="false">Листать экраны</button>
+                </div>
+
+                <p class="site-foot-note">Быстрая загрузка с любого телефона и понятный перевод посетителя в диалог.</p>
+              </div>
+
+              <div class="site-preview-frame">
+                <div class="site-preview-media">
+                  <img
+                    id="site-active-img"
+                    src="./assets/media/case_03_website.webp"
+                    alt="Главный экран быстрой страницы услуг"
+                    width="1200"
+                    height="750"
+                  >
+                  <div class="site-preview-caption">
+                    <span id="site-scene-step" class="site-step-tag">Шаг 01</span>
+                    <h4 id="site-scene-title" class="site-scene-title">Понятное предложение без лишнего шума</h4>
+                    <p id="site-scene-caption" class="site-scene-caption">
+                      Посетитель с первых секунд видит суть услуги, ориентир сроков и проверку до оплаты.
+                    </p>
+                  </div>
+                </div>
+                <div class="site-progress-track" data-site-timeline>
+                  <div id="site-progress-bar" class="site-progress-bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section services-section" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <p class="section-eyebrow">02 / Направления работы</p>
+          <h2 id="services-title" class="section-title">Услуги под задачу</h2>
+          <p class="section-lead">
+            Четыре направления для бизнеса: боты, автоматизация таблиц, быстрые сайты и мини-приложения. Нажмите на нужную строку, чтобы посмотреть детали и ориентиры.
+          </p>
+        </div>
+
+        <div class="services-workspace">
+          <ul class="services-catalog">
+            <li class="service-row" data-service-item="0" data-active="true">
+              <button type="button" class="service-row-trigger" aria-expanded="true">
+                <span class="service-row-index">01</span>
+                <span class="service-row-main">
+                  <span class="service-row-title">Telegram-боты для приема заявок и оплат</span>
+                  <span class="service-row-summary">Пошаговые вопросы клиенту, удобное меню услуг, примерный расчет заказа, прием оплат и мгновенная отправка заявки в ваш личный чат.</span>
+                </span>
+                <span class="service-row-meta">
+                  <span class="service-price">~ от 2 500 р</span>
+                  <span class="service-time">~ от 1-2 дней</span>
+                </span>
+              </button>
+              <div class="service-row-details">
+                <ul class="service-detail-list">
+                  <li>Понятный диалог без запутанных кнопок</li>
+                  <li>Автоматический подсчет примерной цены по вашим услугам</li>
+                  <li>Мгновенное уведомление с контактом клиента в Telegram</li>
+                </ul>
+                <ol class="service-steps-inline">
+                  <li><span>01 Вопросы клиенту</span></li>
+                  <li><span>02 Примерный расчет</span></li>
+                  <li><span>03 Карточка в чате</span></li>
+                </ol>
+              </div>
+            </li>
+
+            <li class="service-row" data-service-item="1" data-active="false">
+              <button type="button" class="service-row-trigger" aria-expanded="false">
+                <span class="service-row-index">02</span>
+                <span class="service-row-main">
+                  <span class="service-row-title">Автоматизация таблиц и сбора обращений из чатов</span>
+                  <span class="service-row-summary">Перенос всех заявок в удобную таблицу, отбор живых запросов из открытых групп Telegram по вашим темам и очистка от лишней рекламы.</span>
+                </span>
+                <span class="service-row-meta">
+                  <span class="service-price">~ от 2 500 р</span>
+                  <span class="service-time">~ от 1-2 дней</span>
+                </span>
+              </button>
+              <div class="service-row-details">
+                <ul class="service-detail-list">
+                  <li>Автоматическая запись новых заявок и статусов в таблицу</li>
+                  <li>Поиск целевых обращений в группах по ключевым словам</li>
+                  <li>Отсев спама, повторов и рекламных рассылок</li>
+                </ul>
+                <ol class="service-steps-inline">
+                  <li><span>01 Сбор обращений</span></li>
+                  <li><span>02 Отсев шума</span></li>
+                  <li><span>03 Запись в таблицу</span></li>
+                </ol>
+              </div>
+            </li>
+
+            <li class="service-row" data-service-item="2" data-active="false">
+              <button type="button" class="service-row-trigger" aria-expanded="false">
+                <span class="service-row-index">03</span>
+                <span class="service-row-main">
+                  <span class="service-row-title">Быстрые сайты услуг и калькуляторы заказа</span>
+                  <span class="service-row-summary">Легкие страницы услуг с живым расчетом стоимости и сроков, которые мгновенно открываются на телефоне и передают заявку в Telegram.</span>
+                </span>
+                <span class="service-row-meta">
+                  <span class="service-price">~ от 3 000 р</span>
+                  <span class="service-time">~ от 1-2 дней</span>
+                </span>
+              </button>
+              <div class="service-row-details">
+                <ul class="service-detail-list">
+                  <li>Аккуратная работа на смартфонах и широких экранах</li>
+                  <li>Живой калькулятор с честной примерной ценой</li>
+                  <li>Защита формы от пустых заявок и запасное копирование текста</li>
+                </ul>
+                <ol class="service-steps-inline">
+                  <li><span>01 Ясный экран</span></li>
+                  <li><span>02 Подбор опций</span></li>
+                  <li><span>03 Заявка в Telegram</span></li>
+                </ol>
+              </div>
+            </li>
+
+            <li class="service-row" data-service-item="3" data-active="false">
+              <button type="button" class="service-row-trigger" aria-expanded="false">
+                <span class="service-row-index">04</span>
+                <span class="service-row-main">
+                  <span class="service-row-title">Мини-приложения и связка сайта с Telegram</span>
+                  <span class="service-row-summary">Удобные интерактивные окна с каталогом услуг и оформлением заказа прямо внутри Telegram, связанные с ботом и вашей таблицей учета.</span>
+                </span>
+                <span class="service-row-meta">
+                  <span class="service-price">~ от 3 500 р</span>
+                  <span class="service-time">~ от 2-3 дней</span>
+                </span>
+              </button>
+              <div class="service-row-details">
+                <ul class="service-detail-list">
+                  <li>Каталог услуг и корзина заказа прямо внутри окна Telegram</li>
+                  <li>Единая связка сайта, бота и таблицы без ручного переноса</li>
+                  <li>Удобный вход для клиента без регистрации и лишних паролей</li>
+                </ul>
+                <ol class="service-steps-inline">
+                  <li><span>01 Выбор в окне</span></li>
+                  <li><span>02 Общая база</span></li>
+                  <li><span>03 Быстрый запуск</span></li>
+                </ol>
+              </div>
+            </li>
+          </ul>
+
+          <aside class="services-detail-panel optical-glass" data-optical-surface aria-live="polite">
+            <p class="services-panel-kicker">Схема результата</p>
+            <h3 id="service-preview-title" class="services-panel-title">Telegram-боты для приема заявок и оплат</h3>
+            <p id="service-preview-desc" class="services-panel-desc">
+              Пошаговые вопросы клиенту, удобное меню услуг, примерный расчет заказа, прием оплат и мгновенная отправка заявки в ваш личный чат.
+            </p>
+
+            <div class="services-panel-metrics">
+              <div>
+                <span class="panel-metric-label">Ориентир цены</span>
+                <strong id="service-preview-price" class="panel-metric-value">~ от 2 500 р</strong>
+              </div>
+              <div>
+                <span class="panel-metric-label">Ориентир срока</span>
+                <strong id="service-preview-time" class="panel-metric-value">~ от 1-2 дней</strong>
+              </div>
+            </div>
+
+            <ol id="service-preview-steps" class="service-preview-steps">
+              <li>01 Вопросы клиенту</li>
+              <li>02 Примерный расчет</li>
+              <li>03 Карточка в чате</li>
+            </ol>
+
+            <p class="services-panel-note">Цена и сроки примерные, точная оценка фиксируется после обсуждения задачи.</p>
+          </aside>
+        </div>
+
+        <aside class="boundaries-note reveal-item" aria-labelledby="boundaries-title">
+          <h3 id="boundaries-title" class="boundaries-title">Когда не подойдем, скажем сразу</h3>
+          <ul class="boundaries-list">
+            <li>Не берем многомесячные корпоративные конкурсы и долгие бумажные согласования.</li>
+            <li>Не собираем весь проект целиком бесплатно до оплаты. До оплаты показываем только легкий пробный вариант на вашей задаче.</li>
+            <li>Если задачу проще решить готовым бесплатным инструментом, честно предупредим до начала работы.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="cases" class="section cases-section" aria-labelledby="cases-title">
+      <div class="container">
+        <div class="cases-top reveal-item">
+          <div class="section-head">
+            <p class="section-eyebrow">03 / Решения в деле</p>
+            <h2 id="cases-title" class="section-title">Примеры решений</h2>
+            <p class="section-lead">
+              Рабочие форматы под реальные задачи бизнеса, которые можно быстро настроить под ваши услуги и показать в пробном запуске.
+            </p>
+          </div>
+
+          <div class="cases-controls">
+            <div class="case-filters" role="group" aria-label="Фильтр примеров решений">
+              <button type="button" class="filter-btn" data-case-filter="all" aria-pressed="true">Все</button>
+              <button type="button" class="filter-btn" data-case-filter="bots" aria-pressed="false">Боты</button>
+              <button type="button" class="filter-btn" data-case-filter="automation" aria-pressed="false">Таблицы и отбор</button>
+              <button type="button" class="filter-btn" data-case-filter="sites" aria-pressed="false">Сайты и мини-приложения</button>
+            </div>
+            <p id="cases-count" class="cases-count">Показано примеров: 4</p>
+          </div>
+        </div>
+
+        <div class="cases-gallery">
+          <article class="case-item case-item--odd reveal-item" data-case-card data-category="bots">
+            <figure class="case-media">
+              <img
+                src="./assets/media/case_01_bot.webp"
+                alt="Трехмерная сцена интерфейса Telegram-бота для приема заявок"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </figure>
+            <div class="case-plate">
+              <div class="case-plate-meta">
+                <span class="case-num">01</span>
+                <span class="case-tag">Боты</span>
+              </div>
+              <h3 class="case-title">Бот для приема заказов с расчетом цены</h3>
+              <p class="case-desc">
+                Клиент отвечает на 3-4 коротких вопроса, сразу видит примерную стоимость и отправляет заявку владельцу в Telegram.
+              </p>
+              <dl class="case-metrics">
+                <div>
+                  <dt>Ответ клиенту</dt>
+                  <dd>до 3 сек</dd>
+                </div>
+                <div>
+                  <dt>Проверка</dt>
+                  <dd>пробный запуск</dd>
+                </div>
+              </dl>
+              <div class="case-plate-foot">
+                <span class="case-timeline">Срок сборки: ~ 1-2 дня</span>
+                <button
+                  type="button"
+                  class="case-detail-btn"
+                  data-case-id="case-01"
+                  commandfor="case-dialog"
+                  command="show-modal"
+                >Подробнее о задаче</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-item case-item--even reveal-item" data-case-card data-category="automation">
+            <figure class="case-media">
+              <img
+                src="./assets/media/case_02_monitor.webp"
+                alt="Трехмерная схема отбора целевых обращений из чатов"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </figure>
+            <div class="case-plate">
+              <div class="case-plate-meta">
+                <span class="case-num">02</span>
+                <span class="case-tag">Таблицы и отбор</span>
+              </div>
+              <h3 class="case-title">Отбор заявок из чатов Telegram и перенос в таблицу</h3>
+              <p class="case-desc">
+                Отслеживание открытых групп по вашим ключевым словам с отсевом рекламы и пересылом нужных запросов в личный чат.
+              </p>
+              <dl class="case-metrics">
+                <div>
+                  <dt>Отбор запросов</dt>
+                  <dd>по вашим темам</dd>
+                </div>
+                <div>
+                  <dt>Передача</dt>
+                  <dd>чат и таблица</dd>
+                </div>
+              </dl>
+              <div class="case-plate-foot">
+                <span class="case-timeline">Срок сборки: ~ 1-2 дня</span>
+                <button
+                  type="button"
+                  class="case-detail-btn"
+                  data-case-id="case-02"
+                  commandfor="case-dialog"
+                  command="show-modal"
+                >Подробнее о задаче</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-item case-item--odd reveal-item" data-case-card data-category="sites">
+            <figure class="case-media">
+              <img
+                src="./assets/media/case_03_website.webp"
+                alt="Трехмерная сцена быстрого сайта услуг с расчетом стоимости"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </figure>
+            <div class="case-plate">
+              <div class="case-plate-meta">
+                <span class="case-num">03</span>
+                <span class="case-tag">Сайты и мини-приложения</span>
+              </div>
+              <h3 class="case-title">Быстрый сайт услуг с калькулятором заказа</h3>
+              <p class="case-desc">
+                Легкая страница с выбором нужных опций, честным ориентиром стоимости и переносом готового запроса прямо в диалог Telegram.
+              </p>
+              <dl class="case-metrics">
+                <div>
+                  <dt>Скорость открытия</dt>
+                  <dd>до 1 сек</dd>
+                </div>
+                <div>
+                  <dt>Заявка</dt>
+                  <dd>прямо в Telegram</dd>
+                </div>
+              </dl>
+              <div class="case-plate-foot">
+                <span class="case-timeline">Срок сборки: ~ 1-2 дня</span>
+                <button
+                  type="button"
+                  class="case-detail-btn"
+                  data-case-id="case-03"
+                  commandfor="case-dialog"
+                  command="show-modal"
+                >Подробнее о задаче</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-item case-item--even reveal-item" data-case-card data-category="sites">
+            <figure class="case-media">
+              <img
+                src="./assets/media/case_04_miniapp.webp"
+                alt="Трехмерная сцена мини-приложения с каталогом внутри Telegram"
+                width="1200"
+                height="800"
+                loading="lazy"
+              >
+            </figure>
+            <div class="case-plate">
+              <div class="case-plate-meta">
+                <span class="case-num">04</span>
+                <span class="case-tag">Сайты и мини-приложения</span>
+              </div>
+              <h3 class="case-title">Мини-приложение с каталогом внутри Telegram</h3>
+              <p class="case-desc">
+                Интерактивное окно выбора услуг прямо поверх переписки в Telegram, связанное с уведомлениями бота и таблицей заказов.
+              </p>
+              <dl class="case-metrics">
+                <div>
+                  <dt>Открытие</dt>
+                  <dd>внутри чата</dd>
+                </div>
+                <div>
+                  <dt>Связка</dt>
+                  <dd>бот и таблица</dd>
+                </div>
+              </dl>
+              <div class="case-plate-foot">
+                <span class="case-timeline">Срок сборки: ~ 2-3 дня</span>
+                <button
+                  type="button"
+                  class="case-detail-btn"
+                  data-case-id="case-04"
+                  commandfor="case-dialog"
+                  command="show-modal"
+                >Подробнее о задаче</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" class="section calculator-section" aria-labelledby="calculator-title">
+      <div class="container">
+        <div class="calculator-top reveal-item">
+          <div class="section-head">
+            <p class="section-eyebrow">04 / Ориентир бюджета</p>
+            <h2 id="calculator-title" class="section-title">Расчет стоимости и сроков</h2>
+            <p class="section-lead">
+              Отметьте нужные модули, чтобы заранее прикинуть примерный бюджет и время запуска.
+            </p>
+          </div>
+
+          <div class="currency-switch" role="group" aria-label="Валюта расчета">
+            <button type="button" class="currency-btn" data-currency-btn="RUB" aria-pressed="true">RUB (р)</button>
+            <button type="button" class="currency-btn" data-currency-btn="USDT" aria-pressed="false">USDT (~)</button>
+          </div>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="calculator-modules">
+            <div class="calc-base-card optical-glass" data-optical-surface>
+              <div class="calc-base-main">
+                <span class="calc-base-badge">Базовый уровень</span>
+                <h3 class="calc-base-title">Базовый бот</h3>
+                <p class="calc-base-desc">Меню, прием заявок от клиентов и мгновенные уведомления владельцу в Telegram.</p>
+              </div>
+              <p id="calc-base-meta" class="calc-base-meta">~ 2 500 р, 1 день</p>
+            </div>
+
+            <fieldset class="calc-fieldset">
+              <legend class="calc-legend">Дополнительные модули</legend>
+
+              <label class="calc-option-row optical-glass" data-optical-surface>
+                <input type="checkbox" class="calc-checkbox" data-calc-option value="admin">
+                <span class="calc-option-body">
+                  <span class="calc-option-title">Управление заявками и статусами в Telegram</span>
+                  <span class="calc-option-desc">Смена статусов обращений, список заказов и контроль прямо в чате.</span>
+                </span>
+                <span class="calc-option-price" data-option-price="admin">+1 000 р, +12 ч</span>
+              </label>
+
+              <label class="calc-option-row optical-glass" data-optical-surface>
+                <input type="checkbox" class="calc-checkbox" data-calc-option value="payment">
+                <span class="calc-option-body">
+                  <span class="calc-option-title">Настройка приема оплат</span>
+                  <span class="calc-option-desc">Сценарий перевода на карту или USDT, проверка статуса и выдача доступа.</span>
+                </span>
+                <span class="calc-option-price" data-option-price="payment">+1 500 р, +12 ч</span>
+              </label>
+
+              <label class="calc-option-row optical-glass" data-optical-surface>
+                <input type="checkbox" class="calc-checkbox" data-calc-option value="sheets_api">
+                <span class="calc-option-body">
+                  <span class="calc-option-title">Передача заявок в таблицы и учет</span>
+                  <span class="calc-option-desc">Автоматическая запись новых обращений в Google Таблицы или ваш рабочий файл.</span>
+                </span>
+                <span class="calc-option-price" data-option-price="sheets_api">+1 500 р, +24 ч</span>
+              </label>
+
+              <label class="calc-option-row optical-glass" data-optical-surface>
+                <input type="checkbox" class="calc-checkbox" data-calc-option value="crm_db">
+                <span class="calc-option-body">
+                  <span class="calc-option-title">База клиентов и рассылка сообщений</span>
+                  <span class="calc-option-desc">История обращений пользователей и отправка уведомлений по нужным группам.</span>
+                </span>
+                <span class="calc-option-price" data-option-price="crm_db">+1 200 р, +12 ч</span>
+              </label>
+
+              <label class="calc-option-row optical-glass" data-optical-surface>
+                <input type="checkbox" class="calc-checkbox" data-calc-option value="urgent">
+                <span class="calc-option-body">
+                  <span class="calc-option-title">Срочный запуск за 6-12 часов</span>
+                  <span class="calc-option-desc">Приоритетная сборка рабочего варианта в ускоренном режиме.</span>
+                </span>
+                <span class="calc-option-price" data-option-price="urgent">+1 500 р, ускорение срока</span>
+              </label>
+            </fieldset>
+          </div>
+
+          <aside class="calc-summary-island dark-glass" data-optical-surface aria-label="Итог примерного расчета">
+            <div class="calc-summary-block">
+              <span class="calc-summary-label">Примерная стоимость</span>
+              <strong id="calc-total-price" class="calc-summary-price">~ 2 500 р</strong>
+            </div>
+
+            <div class="calc-summary-block">
+              <span class="calc-summary-label">Примерный срок</span>
+              <strong id="calc-total-deadline" class="calc-summary-deadline">~ 1 день (24 ч)</strong>
+            </div>
+
+            <p id="calc-selected-summary" class="calc-selected-summary">Выбрано: Базовый бот</p>
+            <div id="calc-live-status" class="visually-hidden" aria-live="polite"></div>
+
+            <p class="calc-disclaimer">
+              Цена и сроки примерные, точная оценка фиксируется после обсуждения задачи.
+            </p>
+
+            <button type="button" id="apply-estimate-btn" class="btn btn-primary btn-full" data-magnetic>
+              Перенести расчет в заявку
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section process-section" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <p class="section-eyebrow">05 / Прозрачный запуск</p>
+          <h2 id="process-title" class="section-title">Порядок работы и оплата</h2>
+          <p class="section-lead">
+            Простой и прозрачный путь от первого сообщения до запуска готового проекта.
+          </p>
+        </div>
+
+        <ol class="process-steps reveal-item">
+          <li class="process-step">
+            <span class="process-num">01</span>
+            <h3 class="process-step-title">Описываете задачу своими словами</h3>
+            <p class="process-step-text">
+              Рассказываете, что именно нужно сделать и какой результат ожидаете. Без сложных анкет и непонятных терминов.
+            </p>
+          </li>
+
+          <li class="process-step">
+            <span class="process-num">02</span>
+            <h3 class="process-step-title">Проверяете легкий пробный вариант</h3>
+            <p class="process-step-text">
+              До основной оплаты показываем рабочий фрагмент бота, тестовую подборку заявок или пробную страницу именно под вашу задачу.
+            </p>
+          </li>
+
+          <li class="process-step">
+            <span class="process-num">03</span>
+            <h3 class="process-step-title">Полный запуск после оплаты</h3>
+            <p class="process-step-text">
+              После согласования и оплаты собираем проект целиком, передаем все файлы и помогаем запустить решение в работу.
+            </p>
+          </li>
+        </ol>
+
+        <div class="payment-block optical-glass reveal-item" data-optical-surface>
+          <div class="payment-head">
+            <h3 class="payment-title">Способы оплаты</h3>
+            <p class="payment-security">
+              Личные номера карт и адреса кошельков на странице не публикуются. Реквизиты отправляются только в личной переписке @SQUZZER_CODER.
+            </p>
+          </div>
+          <ul class="payment-methods">
+            <li>Перевод с карт РФ и РБ на карту Белкарт-Мир по 16-значному номеру через раздел зарубежных переводов в Беларусь (Сбер, Т-Банк, ВТБ, Альфа или Avosend, перевод по СБП не проходит).</li>
+            <li>Криптовалюта USDT в сетях TON и TRC-20.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="order" class="section dark-island order-section" aria-labelledby="order-title">
+      <div class="container">
+        <div class="order-layout">
+          <div class="order-intro reveal-item">
+            <p class="section-eyebrow">06 / Старт проекта</p>
+            <h2 id="order-title" class="section-title">Подготовка заявки</h2>
+            <p class="section-lead">
+              Заполните три коротких поля. Проверка на странице соберет аккуратную заявку и подготовит переход в Telegram.
+            </p>
+
+            <div id="attached-estimate-box" class="attached-estimate-box" hidden>
+              <p class="attached-estimate-label">Прикрепленный ориентир расчета</p>
+              <p id="attached-estimate-text" class="attached-estimate-text"></p>
+              <input type="hidden" id="attached-estimate-input" name="estimate" value="">
+              <button type="button" id="clear-estimate-btn" class="clear-estimate-btn">Убрать расчет</button>
+            </div>
+          </div>
+
+          <div class="order-form-panel dark-glass reveal-item" data-optical-surface>
+            <form id="brief-form" class="brief-form" novalidate>
+              <div class="form-field">
+                <label for="brief-name" class="field-label">Ваше имя</label>
+                <input
+                  id="brief-name"
+                  name="name"
+                  type="text"
+                  class="field-input"
+                  autocomplete="name"
+                  required
+                  minlength="2"
+                  maxlength="60"
+                  data-error="brief-name-error"
+                  aria-invalid="false"
+                  aria-describedby="brief-name-hint"
+                >
+                <p id="brief-name-hint" class="field-hint">От 2 до 60 букв, без цифр и лишних символов.</p>
+                <p id="brief-name-error" class="field-error" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label for="brief-contact" class="field-label">Контакт для связи</label>
+                <input
+                  id="brief-contact"
+                  name="contact"
+                  type="text"
+                  class="field-input"
+                  required
+                  minlength="3"
+                  maxlength="80"
+                  data-error="brief-contact-error"
+                  aria-invalid="false"
+                  aria-describedby="brief-contact-hint"
+                >
+                <p id="brief-contact-hint" class="field-hint">Ник в Telegram (@username), ссылка t.me/username или номер телефона от 10 цифр.</p>
+                <p id="brief-contact-error" class="field-error" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label for="brief-task" class="field-label">Описание задачи</label>
+                <textarea
+                  id="brief-task"
+                  name="task"
+                  rows="4"
+                  class="field-input field-textarea"
+                  required
+                  minlength="12"
+                  maxlength="1000"
+                  data-error="brief-task-error"
+                  aria-invalid="false"
+                  aria-describedby="brief-task-hint"
+                ></textarea>
+                <p id="brief-task-hint" class="field-hint">От 12 до 1000 символов: напишите, какой результат нужен и к какому сроку.</p>
+                <p id="brief-task-error" class="field-error" hidden></p>
+              </div>
+
+              <div class="honeypot-field" aria-hidden="true">
+                <label for="brief-website">Сайт</label>
+                <input id="brief-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div id="form-live-status" class="visually-hidden" aria-live="polite"></div>
+
+              <div class="form-actions">
+                <button type="submit" id="submit-brief-btn" class="btn btn-primary btn-full" data-magnetic>
+                  Подготовить заявку в Telegram
+                </button>
+              </div>
+            </form>
+
+            <div id="brief-result" class="brief-result" hidden>
+              <h3 class="brief-result-title">Заявка готова к отправке</h3>
+              <p class="brief-result-desc">
+                Проверьте текст ниже. Нажмите кнопку перехода в Telegram или скопируйте текст и ник @SQUZZER_CODER вручную, если адрес t.me открывается в вашей сети с задержкой.
+              </p>
+
+              <pre id="brief-preview" class="brief-preview" tabindex="-1"></pre>
+
+              <div class="brief-result-actions">
+                <a
+                  id="telegram-send-link"
+                  href="https://t.me/SQUZZER_CODER"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary"
+                >Открыть чат @SQUZZER_CODER</a>
+                <button type="button" id="copy-brief-btn" class="btn btn-secondary-dark">Скопировать текст заявки</button>
+                <button type="button" id="copy-handle-btn" class="btn btn-secondary-dark">Скопировать @SQUZZER_CODER</button>
+                <button type="button" id="edit-brief-btn" class="btn btn-ghost-dark">Изменить данные</button>
+              </div>
+
+              <p id="copy-status" class="copy-status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="footer-brand-name">SQUZZER ATELIER</p>
+        <p class="footer-brand-sub">Telegram-боты, автоматизация и сайты под ключ.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Навигация в подвале">
+        <a href="#showcase">Проверка</a>
+        <a href="#services">Услуги</a>
+        <a href="#cases">Примеры</a>
+        <a href="#calculator">Расчет</a>
+        <a href="https://t.me/SQUZZER_CODER" target="_blank" rel="noopener noreferrer">@SQUZZER_CODER</a>
+      </nav>
+    </div>
+  </footer>
+
+  <dialog id="case-dialog" class="case-dialog" closedby="any" aria-labelledby="dialog-title">
+    <div class="case-dialog-surface">
+      <div class="case-dialog-head">
+        <div>
+          <p id="dialog-kicker" class="dialog-kicker">Пример 01</p>
+          <h2 id="dialog-title" class="dialog-title">Бот для приема заказов с расчетом цены</h2>
+        </div>
+        <button
+          type="button"
+          class="dialog-close-btn"
+          commandfor="case-dialog"
+          command="close"
+          aria-label="Закрыть подробности примера"
+        >Закрыть</button>
+      </div>
+
+      <div class="case-dialog-body">
+        <figure class="dialog-media">
+          <img
+            id="dialog-media-img"
+            src="./assets/media/case_01_bot.webp"
+            alt="Трехмерная сцена интерфейса Telegram-бота для приема заявок"
+            width="1200"
+            height="800"
+          >
+        </figure>
+
+        <p id="dialog-summary" class="dialog-summary"></p>
+
+        <div class="dialog-meta-grid">
+          <div class="dialog-meta-card">
+            <span class="dialog-meta-label">Что получает заказчик</span>
+            <p id="dialog-result" class="dialog-meta-value"></p>
+          </div>
+          <div class="dialog-meta-card">
+            <span class="dialog-meta-label">Ориентир по срокам</span>
+            <p id="dialog-timeline" class="dialog-meta-value"></p>
+          </div>
+        </div>
+
+        <ul id="dialog-highlights" class="dialog-highlights"></ul>
+      </div>
+
+      <div class="case-dialog-foot">
+        <button type="button" id="dialog-apply-btn" class="btn btn-primary">Обсудить похожую задачу</button>
+        <button type="button" class="btn btn-secondary-dark" commandfor="case-dialog" command="close">Вернуться к списку</button>
+      </div>
+    </div>
+  </dialog>
+
+  <aside id="contacts-popover" class="contacts-popover" popover="auto" aria-labelledby="contacts-popover-title">
+    <div class="contacts-popover-head">
+      <h2 id="contacts-popover-title" class="contacts-popover-title">Прямая связь в Telegram</h2>
+      <button
+        type="button"
+        class="popover-close-btn"
+        commandfor="contacts-popover"
+        command="hide-popover"
+        aria-label="Закрыть окно контактов"
+      >Закрыть</button>
+    </div>
+
+    <p class="contacts-popover-lead">
+      Отвечаю лично без менеджеров и посредников. Рабочее время с 10:00 до 22:00 по Минску и Москве.
+    </p>
+
+    <div class="contacts-popover-actions">
+      <a href="https://t.me/SQUZZER_CODER" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
+        Написать @SQUZZER_CODER
+      </a>
+      <button type="button" id="popover-copy-handle-btn" class="btn btn-secondary-dark btn-full" data-copy-handle="@SQUZZER_CODER">
+        Скопировать @SQUZZER_CODER
+      </button>
+    </div>
+
+    <p class="contacts-popover-payment">
+      Оплата: карта Белкарт-Мир по 16-значному номеру (без СБП) или USDT в сетях TON и TRC-20. Реквизиты передаются только в личной переписке.
+    </p>
+  </aside>
+</body>
+</html>

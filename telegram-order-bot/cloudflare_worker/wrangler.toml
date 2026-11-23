@@ -1,0 +1,7 @@
+name = "clientflow-orders-worker"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+OWNER_HANDLE = "@SQUZZER_CODER"
+ALLOWED_ORIGINS = "*"
