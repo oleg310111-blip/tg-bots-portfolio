@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Учим интересно. Материалы для учителей 1-4 классов</title>
+  <meta name="description" content="Каталог рабочих листов, тетрадей и доступ в закрытый канал с материалами для 1-4 классов от Учим интересно." />
+  <style>
+    @layer reset, base, layout, components;
+
+    @font-face {
+      font-family: "Wix Madefor Display";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("../../assets/fonts/WixMadeforDisplay_normal_700_cyrillic.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Wix Madefor Display";
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url("../../assets/fonts/WixMadeforDisplay_normal_800_cyrillic.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Cormorant Garamond";
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url("../../assets/fonts/CormorantGaramond_italic_700_cyrillic.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Onest";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("../../assets/fonts/Onest_normal_400_cyrillic.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Onest";
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("../../assets/fonts/Onest_normal_500_cyrillic.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Onest";
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url("../../assets/fonts/Onest_normal_600_cyrillic.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Onest";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("../../assets/fonts/Onest_normal_700_cyrillic.woff2") format("woff2");
+    }
+
+    @layer reset {
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      body, h1, h2, h3, p, ul {
+        margin: 0;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+      }
+    }
+
+    @layer base {
+      :root {
+        --bg: #f6f1e7;
+        --bg-soft: #eee6d6;
+        --surface: #fffdf8;
+        --surface-ink: #1e252b;
+        --ink: #1e252b;
+        --ink-muted: #55606b;
+        --accent: #b8532a;
+        --accent-deep: #963f1c;
+        --sage: #2f5d50;
+        --sage-soft: #e6efe9;
+        --line: rgba(30, 37, 43, 0.12);
+        --shadow: 0 18px 42px rgba(45, 36, 22, 0.08);
+        --radius: 20px;
+      }
+
+      body {
+        font-family: "Onest", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background-color: var(--bg);
+        background-image:
+          radial-gradient(circle at 12% 8%, rgba(184, 83, 42, 0.10), transparent 36%),
+          radial-gradient(circle at 88% 16%, rgba(47, 93, 80, 0.10), transparent 38%),
+          linear-gradient(to right, rgba(30, 37, 43, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(30, 37, 43, 0.03) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+        line-height: 1.55;
+        min-block-size: 100dvh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+    }
+
+    @layer layout {
+      .wrap {
+        inline-size: min(1120px, 100% - 2rem);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        padding-block: 1.25rem;
+        border-block-end: 1px solid var(--line);
+        background: rgba(246, 241, 231, 0.85);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        inset-block-start: 0;
+        z-index: 20;
+      }
+
+      .header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-family: "Wix Madefor Display", sans-serif;
+        font-weight: 800;
+        font-size: 1.05rem;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-mark {
+        inline-size: 36px;
+        block-size: 36px;
+        border-radius: 11px;
+        background: var(--surface-ink);
+        color: #fffdf8;
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding-block: clamp(2.2rem, 5vw, 4.2rem) clamp(1.8rem, 4vw, 3rem);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+        gap: 1.75rem;
+        align-items: stretch;
+      }
+
+      .catalog-section {
+        padding-block: 1.5rem 3.5rem;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
+        grid-auto-rows: auto;
+        gap: 1.25rem;
+        margin-block-start: 1.5rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+    }
+
+    @layer components {
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.42rem 0.85rem;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--sage);
+      }
+
+      .hero-copy {
+        background: rgba(255, 253, 248, 0.86);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: clamp(1.5rem, 3.5vw, 2.6rem);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.35rem;
+      }
+
+      .hero-title {
+        font-family: "Wix Madefor Display", sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.85rem, 4vw, 3rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-title em {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 1.12em;
+        color: var(--accent);
+      }
+
+      .hero-lead {
+        color: var(--ink-muted);
+        font-size: 1.02rem;
+        max-inline-size: 54ch;
+      }
+
+      .hero-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.35rem;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        background: var(--accent);
+        color: #fffdf8;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 160ms ease, transform 160ms ease;
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-deep);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.15rem;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color 160ms ease, background-color 160ms ease;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--ink);
+        background: var(--bg-soft);
+      }
+
+      .vip-panel {
+        background: var(--surface-ink);
+        color: #fffdf8;
+        border-radius: var(--radius);
+        padding: clamp(1.5rem, 3vw, 2.2rem);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.25rem;
+      }
+
+      .vip-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        align-self: flex-start;
+        padding: 0.36rem 0.78rem;
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.12);
+        border: 1px solid rgba(255, 253, 248, 0.2);
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: #f3c6a8;
+      }
+
+      .vip-title {
+        font-family: "Wix Madefor Display", sans-serif;
+        font-weight: 800;
+        font-size: 1.45rem;
+        line-height: 1.2;
+      }
+
+      .vip-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 0.55rem;
+        color: rgba(255, 253, 248, 0.84);
+        font-size: 0.95rem;
+      }
+
+      .vip-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+      }
+
+      .vip-list svg {
+        flex: none;
+        margin-block-start: 0.2rem;
+        color: #f3c6a8;
+      }
+
+      .vip-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block-start: 1rem;
+        border-block-start: 1px solid rgba(255, 253, 248, 0.14);
+        flex-wrap: wrap;
+      }
+
+      .vip-price {
+        font-family: "Wix Madefor Display", sans-serif;
+        font-weight: 800;
+        font-size: 1.65rem;
+      }
+
+      .vip-price small {
+        display: block;
+        font-family: "Onest", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: rgba(255, 253, 248, 0.72);
+      }
+
+      .section-top {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .section-title {
+        font-family: "Wix Madefor Display", sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.4rem, 2.8vw, 2rem);
+        letter-spacing: -0.02em;
+      }
+
+      .filter-bar {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding-block: 0.25rem;
+        max-inline-size: 100%;
+      }
+
+      .filter-btn {
+        flex: none;
+        position: relative;
+        padding: 0.55rem 0.95rem;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink-muted);
+        font-weight: 600;
+        font-size: 0.92rem;
+        cursor: pointer;
+        transition: color 140ms ease, border-color 140ms ease, background-color 140ms ease;
+      }
+
+      .filter-btn[aria-pressed="true"] {
+        color: var(--ink);
+        border-color: var(--ink);
+        background: var(--bg-soft);
+      }
+
+      .filter-btn[aria-pressed="true"]::after {
+        content: "";
+        position: absolute;
+        inset: auto 0.65rem 0.2rem;
+        border-block-end: 2px solid var(--accent);
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.35rem;
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 0.75rem;
+        box-shadow: 0 10px 26px rgba(45, 36, 22, 0.05);
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(30, 37, 43, 0.28);
+      }
+
+      .card[hidden] {
+        display: none;
+      }
+
+      .card-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--sage);
+      }
+
+      .tag {
+        padding: 0.26rem 0.62rem;
+        border-radius: 999px;
+        background: var(--sage-soft);
+      }
+
+      .card h3 {
+        font-family: "Wix Madefor Display", sans-serif;
+        font-weight: 700;
+        font-size: 1.18rem;
+        line-height: 1.25;
+      }
+
+      .card p {
+        color: var(--ink-muted);
+        font-size: 0.94rem;
+      }
+
+      .card-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding-block-start: 0.85rem;
+        border-block-start: 1px solid var(--line);
+      }
+
+      .price-tag {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--ink);
+      }
+
+      .pick-btn {
+        padding: 0.55rem 0.95rem;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: var(--bg);
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+      }
+
+      .pick-btn[aria-pressed="true"] {
+        background: var(--sage);
+        color: #fffdf8;
+        border-color: var(--sage);
+      }
+
+      .order-dock {
+        position: sticky;
+        inset-block-end: 1rem;
+        z-index: 25;
+        margin-block-start: 2rem;
+        background: var(--surface-ink);
+        color: #fffdf8;
+        border-radius: 18px;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 20px 44px rgba(20, 24, 28, 0.26);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .order-summary {
+        display: grid;
+        gap: 0.15rem;
+      }
+
+      .order-summary strong {
+        font-family: "Wix Madefor Display", sans-serif;
+        font-size: 1.05rem;
+      }
+
+      .order-summary span {
+        font-size: 0.88rem;
+        color: rgba(255, 253, 248, 0.75);
+      }
+
+      .site-footer {
+        padding-block: 1.6rem 2.5rem;
+        border-block-start: 1px solid var(--line);
+        color: var(--ink-muted);
+        font-size: 0.86rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+          </svg>
+        </span>
+        <span>Учим интересно</span>
+      </a>
+      <div class="header-actions">
+        <a class="btn-secondary" href="https://t.me/repetitor_ev" target="_blank" rel="noopener">Канал в Telegram</a>
+        <a class="btn-primary" href="https://t.me/sekaterina24" target="_blank" rel="noopener">Написать автору</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div>
+            <span class="pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v18M3 12h18"/>
+              </svg>
+              Материалы для 1-4 классов
+            </span>
+          </div>
+          <h1 id="hero-heading" class="hero-title">
+            Готовые рабочие листы и тетради, <em>которые экономят</em> время на подготовку к урокам
+          </h1>
+          <p class="hero-lead">
+            Собранные комплекты для учителей начальных классов по русскому языку и математике. Выбирайте нужные темы в одном месте или открывайте доступ сразу ко всей базе.
+          </p>
+          <div class="hero-cta-row">
+            <a class="btn-primary" href="#catalog">Выбрать материалы</a>
+            <a class="btn-secondary" href="https://t.me/sekaterina24" target="_blank" rel="noopener">Связаться с @sekaterina24</a>
+          </div>
+        </div>
+
+        <aside class="vip-panel" aria-label="Закрытый канал с материалами">
+          <div>
+            <span class="vip-badge">Доступ ко всей базе</span>
+            <h2 class="vip-title" style="margin-block-start: 0.9rem;">Закрытый канал для 1-4 классов</h2>
+            <ul class="vip-list" style="margin-block-start: 0.9rem;">
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Рабочие листы, карточки, презентации и словари в формате PDF</span>
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Тетради на все каникулы для каждого класса начальной школы</span>
+              </li>
+              <li>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Постоянное пополнение новыми файлами и скидка на отдельные тетради</span>
+              </li>
+            </ul>
+          </div>
+          <div class="vip-footer">
+            <div class="vip-price">
+              699 ₽
+              <small>разовый вход без продлений</small>
+            </div>
+            <button type="button" class="btn-primary pick-btn" data-id="vip" data-title="Доступ в закрытый канал 1-4 класс" data-price="699" aria-pressed="false">
+              Добавить в заявку
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog-section" aria-labelledby="catalog-title">
+      <div class="section-top">
+        <div>
+          <h2 id="catalog-title" class="section-title">Каталог комплектов и тем</h2>
+          <p style="color: var(--ink-muted); margin-block-start: 0.25rem;">Отметьте нужные материалы, чтобы сразу сформировать готовый запрос в Telegram.</p>
+        </div>
+        <div class="filter-bar" role="toolbar" aria-label="Фильтр по предметам">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">Все темы</button>
+          <button type="button" class="filter-btn" data-filter="rus" aria-pressed="false">Русский язык</button>
+          <button type="button" class="filter-btn" data-filter="math" aria-pressed="false">Математика</button>
+          <button type="button" class="filter-btn" data-filter="vip" aria-pressed="false">Закрытый канал</button>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="cards-grid">
+        <article class="card" data-cat="rus">
+          <div class="card-meta">
+            <span class="tag">Русский язык</span>
+            <span>Хит комплектов</span>
+          </div>
+          <h3>Большой комплект «Состав слова»</h3>
+          <p>12 рабочих листов, памятки по разбору, карточки-пятиминутки, проверочные работы и дидактическая игра в одном файле.</p>
+          <div class="card-foot">
+            <span class="price-tag">180 ₽</span>
+            <button type="button" class="pick-btn" data-id="sostav-pack" data-title="Большой комплект Состав слова" data-price="180" aria-pressed="false">Выбрать</button>
+          </div>
+        </article>
+
+        <article class="card" data-cat="rus">
+          <div class="card-meta">
+            <span class="tag">Русский язык</span>
+            <span>150 ₽ в канале</span>
+          </div>
+          <h3>Рабочая тетрадь «Состав слова»</h3>
+          <p>Удобные отдельные листы, можно менять порядок изучения морфем под программу вашего класса. Участникам закрытой группы дешевле.</p>
+          <div class="card-foot">
+            <span class="price-tag">180 ₽</span>
+            <button type="button" class="pick-btn" data-id="sostav-wb" data-title="Рабочая тетрадь Состав слова" data-price="180" aria-pressed="false">Выбрать</button>
+          </div>
+        </article>
+
+        <article class="card" data-cat="math">
+          <div class="card-meta">
+            <span class="tag">Математика</span>
+            <span>1-4 класс</span>
+          </div>
+          <h3>Периметр квадрата и прямоугольника</h3>
+          <p>Готовые листы с заданиями разного уровня сложности для отработки формул в классе и на самостоятельной работе.</p>
+          <div class="card-foot">
+            <span class="price-tag">В закрытом канале</span>
+            <button type="button" class="pick-btn" data-id="perimetr" data-title="Материалы Периметр квадрата и прямоугольника" data-price="0" aria-pressed="false">Уточнить</button>
+          </div>
+        </article>
+
+        <article class="card" data-cat="math">
+          <div class="card-meta">
+            <span class="tag">Математика</span>
+            <span>3 класс</span>
+          </div>
+          <h3>Порядок действий и компоненты умножения</h3>
+          <p>Наглядные листы и памятки на доску по компонентам умножения, деления и правильному порядку действий в выражениях.</p>
+          <div class="card-foot">
+            <span class="price-tag">В закрытом канале</span>
+            <button type="button" class="pick-btn" data-id="math-ops" data-title="Порядок действий и компоненты умножения" data-price="0" aria-pressed="false">Уточнить</button>
+          </div>
+        </article>
+
+        <article class="card" data-cat="rus">
+          <div class="card-meta">
+            <span class="tag">Русский язык</span>
+            <span>Наглядность</span>
+          </div>
+          <h3>Наглядность для синтаксического разбора</h3>
+          <p>Четкие схемы и визуальные карточки для разбора предложений, которые помогают детям быстрее запомнить порядок работы.</p>
+          <div class="card-foot">
+            <span class="price-tag">В закрытом канале</span>
+            <button type="button" class="pick-btn" data-id="syntax" data-title="Наглядность для синтаксического разбора" data-price="0" aria-pressed="false">Уточнить</button>
+          </div>
+        </article>
+
+        <article class="card" data-cat="vip">
+          <div class="card-meta">
+            <span class="tag">Вся база 1-4 класс</span>
+            <span>Выгоднее всего</span>
+          </div>
+          <h3>Полный доступ в закрытый канал</h3>
+          <p>Все текущие рабочие листы, презентации, тетради на каникулы и новые публикации без повторных оплат.</p>
+          <div class="card-foot">
+            <span class="price-tag">699 ₽</span>
+            <button type="button" class="pick-btn" data-id="vip" data-title="Доступ в закрытый канал 1-4 класс" data-price="699" aria-pressed="false">Выбрать</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="order-dock" role="region" aria-label="Быстрый заказ выбранных материалов">
+        <div class="order-summary">
+          <strong id="order-count">Ничего не выбрано</strong>
+          <span id="order-detail">Отметьте нужные комплекты выше или напишите напрямую @sekaterina24</span>
+        </div>
+        <a id="order-link" class="btn-primary" href="https://t.me/sekaterina24" target="_blank" rel="noopener">
+          Оформить в Telegram
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <span>Пример персональной страницы каталога для канала @repetitor_ev.</span>
+    <span>Контакт автора материалов: @sekaterina24</span>
+  </footer>
+
+  <script>
+    (function () {
+      const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+      const cards = Array.from(document.querySelectorAll("#cards-grid .card"));
+      const pickButtons = Array.from(document.querySelectorAll(".pick-btn"));
+      const orderCount = document.getElementById("order-count");
+      const orderDetail = document.getElementById("order-detail");
+      const orderLink = document.getElementById("order-link");
+
+      const selected = new Map();
+
+      function renderOrder() {
+        const items = Array.from(selected.values());
+        if (items.length === 0) {
+          orderCount.textContent = "Ничего не выбрано";
+          orderDetail.textContent = "Отметьте нужные комплекты выше или напишите напрямую @sekaterina24";
+          orderLink.href = "https://t.me/sekaterina24";
+          return;
+        }
+        const paidTotal = items.reduce((sum, item) => sum + item.price, 0);
+        const titles = items.map((item) => item.title);
+        orderCount.textContent = "Выбрано позиций: " + items.length + (paidTotal > 0 ? " на " + paidTotal + " ₽" : "");
+        orderDetail.textContent = titles.join(", ");
+        const message = "Здравствуйте. Хочу приобрести материалы: " + titles.join(", ") + (paidTotal > 0 ? ", ориентир " + paidTotal + " ₽" : "") + ". Подскажите по оплате и доступу.";
+        orderLink.href = "https://t.me/sekaterina24?text=" + encodeURIComponent(message);
+      }
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-filter");
+          filterButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+          cards.forEach((card) => {
+            const cat = card.getAttribute("data-cat");
+            card.hidden = target !== "all" && cat !== target;
+          });
+        });
+      });
+
+      pickButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-id");
+          const title = btn.getAttribute("data-title");
+          const price = Number(btn.getAttribute("data-price") || "0");
+          const isActive = selected.has(id);
+          if (isActive) {
+            selected.delete(id);
+          } else {
+            selected.set(id, { id, title, price });
+          }
+          const nowSelected = selected.has(id);
+          pickButtons.forEach((other) => {
+            if (other.getAttribute("data-id") === id) {
+              other.setAttribute("aria-pressed", String(nowSelected));
+              other.textContent = nowSelected ? "В заявке" : (price > 0 ? "Выбрать" : "Уточнить");
+            }
+          });
+          renderOrder();
+        });
+      });
+
+      renderOrder();
+    })();
+  </script>
+</body>
+</html>
